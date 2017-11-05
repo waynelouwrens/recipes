@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import RecipesContainer from './recipes/RecipesContainer'
 
 const recipes = [
@@ -33,10 +33,20 @@ const recipes = [
 ]
 
 
-class App extends Component {
+class App extends PureComponent {
+  constructor() {
+    super()
+
+    this.state = {
+      recipes: recipes
+    }
+  }
+
   render() {
+    const { recipes } = this.state
+
     return (
-      <div>
+      <div className="app">
         <RecipesContainer recipes={ recipes } />
       </div>
     )

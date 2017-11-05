@@ -1,47 +1,48 @@
 import React, { PureComponent } from 'react'
-import './LikeButton.css'
 import HeartGrey from '../images/heart-grey.svg'
 import HeartRed from '../images/heart-red.svg'
+import './LikeButton.css'
 
 class LikeButton extends PureComponent {
   constructor() {
-    super()
+  super()
 
-    this.state = {
-      liked: false
-    }
+  this.state = {
+    liked: false
   }
+}
+
+toggleLike() {
+  this.setState({
+    liked: !this.state.liked
+  })
+}
 
   classNames() {
     const { liked } = this.state
 
-    let classes = 'like'
+    let classes = 'LikeButton'
 
     if (liked) { classes += ' liked' }
 
     return classes
   }
 
-  toggleLike() {
-    this.setState({
-      liked: !this.state.liked
-    })
-  }
-
   render() {
-    const { liked } = this.state
+    const { liked, onChange } = this.state
+
     return (
-      <div className={ this.classNames() }>
+      <p className={ this.classNames() }>
         <button onClick={ this.toggleLike.bind(this) }>
-          <img className="heart" src={ liked ? HeartRed : HeartGrey } />
+          <img className="heart" alt="liked" src={ liked ? HeartRed : HeartGrey } />
           <span className="copy">
-            <img className="heart" src={ liked ? HeartRed : HeartGrey } />
+            <img className="heart" alt="not liked" src={ liked ? HeartRed : HeartGrey } />
           </span>
         </button>
         <span className="likes">{ liked ? 'You like this' : null }</span>
-      </div>
+      </p>
     )
   }
-
+}
 
 export default LikeButton
