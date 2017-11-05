@@ -1,5 +1,4 @@
-import React, { PureComponent } from 'react';
-import './App.css';
+import React, { Component } from 'react';
 import RecipesContainer from './recipes/RecipesContainer'
 
 const recipes = [
@@ -34,7 +33,7 @@ const recipes = [
 ]
 
 
-class App extends PureComponent {
+class App extends Component {
   render() {
     return (
       <div>

@@ -3,6 +3,7 @@ import chai, { expect } from 'chai'
 import { shallow } from 'enzyme'
 import chaiEnzyme from 'chai-enzyme'
 import RecipeItem from './RecipeItem'
+import Vegetarian from '../images/vegetarian.svg'
 
 chai.use(chaiEnzyme())
 
@@ -26,7 +27,7 @@ describe('<RecipeItem />', () => {
     expect(container.find('h1')).to.have.text(recipe.title)
   })
 
-  it('shows a "iconvgt"  when it is vegetarian', () => {
-    expect(container.find('ul > li')).to.have.text('iconvgt')
+  it('shows an image when it is vegetarian', () => {
+    expect(container.find('ul > li > img')).to.have.attr('src', Vegetarian )
   })
 })
